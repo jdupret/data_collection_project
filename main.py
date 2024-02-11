@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from bs4 import BeautifulSoup as bs
-from menu import menu
 
 # Page Principale
 st.title("Projet de Data Collection Groupe 5")
@@ -14,7 +13,9 @@ st.markdown("- Data source: at-Dakar.")
 # Barre de Menu lattérale
 st.sidebar.title("User Input Features")
 
+# création d'une liste de 1 à 100
 list1 = [i for i in range(1, 101)]
+
 option1 = st.sidebar.selectbox(
     "Pages indexes",
     list1,
@@ -28,12 +29,9 @@ option2 = st.sidebar.selectbox(
 st.write('Vous avez sélectionné:', option1)
 st.write('Vous avez sélectionné:', option2)
 
-st.sidebar.button("Scraper les Data", type="primary", on_click='scraper_page', args=(option1, option2))
-
 
 def scraper_page():
     """
     Fonction qui permet de scraper de les les pages avec BeautifulSoup
     :return: Pandas DataFrame
     """
-    pass
