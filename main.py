@@ -15,13 +15,13 @@ def add_bg_from_local(image_file):
         encoded_string = base64.b64encode(image_file.read())
     st.markdown(
         f"""
-    <style>
-    .stApp {{
-        background-image: url(data:image/{"jpg"};base64,{encoded_string.decode()});
-        background-size: cover
-    }}
-    </style>
-    """,
+            <style>
+            .stApp {{
+                background-image: url(data:image/{"jpg"};base64,{encoded_string.decode()});
+                background-size: cover
+            }}
+            </style>
+        """,
         unsafe_allow_html=True
     )
 
@@ -32,7 +32,8 @@ add_bg_from_local('background.jpg')
 st.title("Projet de Data Collection Groupe 5")
 st.write(
     "This app performs webscraping of data from expat-dakar over multiples pages. "
-    "And we can also download scraped data from the app directly without scraping them.")
+    "And we can also download scraped data from the app directly without scraping them."
+)
 st.markdown("- Python libraries: base64, pandas, streamlit, requests, bs4")
 st.markdown("- Data source: at-Dakar.")
 
@@ -48,9 +49,11 @@ option1 = st.sidebar.selectbox(
 )
 
 option2 = st.sidebar.selectbox(
-    "Options",
-    ("Scrape data using beautifulSoup", "Download scraped data", "Dashbord of the data", "Fill the form"),
-    # index=None
+    "Options", (
+        "Scrape data using beautifulSoup",
+        "Download scraped data",
+        "Dashbord of the data", "Fill the form"
+    )
 )
 
 
@@ -64,7 +67,8 @@ def load(dataframe, title, key, key1):
         # st.header(title)
 
         st.subheader('Display data dimension')
-        st.write('Data dimension: ' + str(dataframe.shape[0]) + ' rows and ' + str(dataframe.shape[1]) + ' columns.')
+        st.write('Data dimension: ' +
+                 str(dataframe.shape[0]) + ' rows and ' + str(dataframe.shape[1]) + ' columns.')
         st.dataframe(dataframe)
 
         csv = dataframe.to_csv().encode('utf-8')
@@ -81,17 +85,19 @@ if option2 == "Scrape data using beautifulSoup":
     appart_a_louer = scrap_appart_a_louer(option1)
     appart_meuble = scrap_appart_meuble(option1)
     terrain_a_vendre = srappe_terrain_a_vendre(option1)
+    load(appart_a_louer, "Appartements à louer", 1, 101)
+    load(appart_meuble, "Appartement meublés", 2, 102)
+    load(terrain_a_vendre, "Terrains à vendre", 3, 103)
 
-    load(appart_a_louer, 'Appartements à louer', '1', '101')
-    load(appart_meuble, 'Appartement meublés', '2', '102')
-    load(terrain_a_vendre, 'Terrains à vendre', '3', '103')
 
+if option2 == "Download scraped data":
+    web_appart_a_louer = pd.read_csv("expat_dakar_appart_alouer.csv")
+    web_appart_meuble = pd.read_csv("expat_dakar_appart_meuble.csv")
+    web_terrain_a_vendre = pd.read_csv("expat_dakar_terrain_a_vendre.csv")
+    load(web_appart_a_louer, "Appartements à louer", 4, 104)
+    load(web_appart_meuble, "Appartement meublés", 5, 105)
+    load(web_terrain_a_vendre, "Terrains à vendre", 6, 106)
 
 if option2 == "Fill the form":
-    components.html("""
-        <iframe src=https://ee.kobotoolbox.org/i/RR76hSbO width="800" height="600"></iframe>
-        """)
-
-
-# load(Motocycles, 'Motocycles data', '2', '102')
-# st.bar_chart(data=appart_louer, x=None, y=None, color=None, width=0, height=0, use_container_width=True)
+    st.markdown('<iframe src="https://ee.kobotoolbox.org/i/nQd4n5J5" style="width:100%; height:100vh;"></iframe>',
+                unsafe_allow_html=True)
