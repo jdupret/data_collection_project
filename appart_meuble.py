@@ -37,12 +37,12 @@ def scrap_appart_meuble(nbr_pages=10):
                     superficie = ''
 
                 obj = {
-                    'Détail': detail,
-                    'Nombre de chambre': nombre_chambre,
-                    'Superficie': superficie,
-                    'Adresse': adresse,
-                    'Prix': prix,
-                    'Lien vers image': lien_image
+                    'detail': detail,
+                    'nombre_chambre': nombre_chambre,
+                    'superficie': superficie,
+                    'adresse': adresse,
+                    'prix': prix,
+                    'lien_image': lien_image
                 }
                 data.append(obj)
             except:

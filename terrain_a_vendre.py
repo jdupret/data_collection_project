@@ -23,9 +23,7 @@ def srappe_terrain_a_vendre(nbr_pages=10):
             Soup = bs(res.text, 'html.parser')
             try:
                 adresse = Soup.find('span', class_='listing-item__address-location').text.strip()
-                prix = (Soup.find('span', class_='listing-card__price__value 1').text.strip()
-                        .replace('\u202f', '')
-                        .replace(' F Cfa', ''))
+                prix = (Soup.find('span', class_='listing-card__price__value 1').text.strip().replace('\u202f', '').replace(' F Cfa', ''))
                 detail = Soup.find('div', class_='listing-item__description').text
                 lien_image = soup.find("img", class_="listing-card__image__resource").get("src")
                 try:
@@ -35,11 +33,11 @@ def srappe_terrain_a_vendre(nbr_pages=10):
                     superficie = ''
 
                 obj = {
-                    'Détail': detail,
-                    'Superficie': superficie,
-                    'Adresse': adresse,
-                    'Prix': prix,
-                    'Lien vers image': lien_image
+                    'detail': detail,
+                    'superficie': superficie,
+                    'adresse': adresse,
+                    'prix': prix,
+                    'lien_image': lien_image
                 }
                 data.append(obj)
             except:
