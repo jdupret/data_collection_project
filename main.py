@@ -1,6 +1,7 @@
 import base64
 
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from appart_a_louer import scrap_appart_a_louer
@@ -84,6 +85,13 @@ if option2 == "Scrape data using beautifulSoup":
     load(appart_a_louer, 'Appartements à louer', '1', '101')
     load(appart_meuble, 'Appartement meublés', '2', '102')
     load(terrain_a_vendre, 'Terrains à vendre', '3', '103')
+
+
+if option2 == "Fill the form":
+    components.html("""
+        <iframe src=https://ee.kobotoolbox.org/i/RR76hSbO width="800" height="600"></iframe>
+        """)
+
 
 # load(Motocycles, 'Motocycles data', '2', '102')
 # st.bar_chart(data=appart_louer, x=None, y=None, color=None, width=0, height=0, use_container_width=True)
