@@ -119,6 +119,7 @@ if option2 == "Dashbord of the data":
     appart_a_louer = scrap_appart_a_louer(option1)
     appart_meuble = scrap_appart_meuble(option1)
     terrain_a_vendre = srappe_terrain_a_vendre(option1)
+
     appart_a_louer['prix'] = appart_a_louer['prix'].astype('float')
     appart_plus_chers = appart_a_louer.sort_values(by='prix', ascending=False)
     appart_plus_chers = appart_plus_chers[:5]
@@ -128,7 +129,7 @@ if option2 == "Dashbord of the data":
     plt.xlabel('Article')
     plt.ylabel('Prix')
     plt.xticks(rotation=45)
-    plt.title('Population des villes')
+    plt.title('Appartement les plus chers')
     plt.tight_layout()
 
     st.pyplot(fig)
