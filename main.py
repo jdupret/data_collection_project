@@ -40,7 +40,7 @@ st.markdown("- Data source: at-Dakar.")
 st.sidebar.title("Menu")
 
 # création d'une liste de 1 à 100
-list1 = [i for i in range(1, 101)]
+list1 = [i for i in range(1, 201)]
 
 option1 = st.sidebar.selectbox(
     "Pages indexes",
@@ -50,7 +50,7 @@ option1 = st.sidebar.selectbox(
 option2 = st.sidebar.selectbox(
     "Options",
     ("Scrape data using beautifulSoup", "Download scraped data", "Dashbord of the data", "Fill the form"),
-    index=None
+    # index=None
 )
 
 

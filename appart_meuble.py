@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup as bs
 
 
 # caching des données
-#@st.cache_data
+@st.cache_data
 def scrap_appart_meuble(nbr_pages=10):
     df= pd.DataFrame()
     for p in range(1,98):

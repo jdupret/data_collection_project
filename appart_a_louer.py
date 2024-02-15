@@ -50,5 +50,4 @@ def scrap_appart_a_louer(nbr_pages=10):
                 pass
         DF = pd.DataFrame(data)
         df = pd.concat([df, DF], axis=0).reset_index(drop=True)
-        time.sleep(2)
     return df
